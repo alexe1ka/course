@@ -8,14 +8,9 @@ public class Rectangle extends Shape {
     }
 
     public Rectangle(float length, float width) {
-        //возможно это не правильно.делаю такое первый раз.
-        //если не правильно - хотелось бы узнать почему
-        if (length <= 0 || width <= 0) {
-            throw new IllegalArgumentException("Стороны прямоугольника не могут быть <= 0");
-        } else {
+        //считаем,что вводятся корректные данные
             this.length = length;
             this.width = width;
-        }
     }
 
     public float getLength() {
@@ -45,7 +40,6 @@ public class Rectangle extends Shape {
 
     @Override
     public String toString() {
-        //TODO переписать через stringBuffer
         return "Rectangle[" +
                 "length=" + length +
                 ", width=" + width +

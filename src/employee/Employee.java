@@ -1,4 +1,4 @@
-package Employee;
+package employee;
 
 public class Employee {
     private int id;
@@ -55,8 +55,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        //TODO переписать через stringBuffer
-        return "Employee{" +
+        return "employee{" +
                 "id=" + id +
                 ",Name='" + firstName + '\'' +
                 " " + lastName + '\'' +

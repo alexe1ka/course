@@ -8,13 +8,8 @@ public class Circle extends Shape {
     }
 
     public Circle(double radius) {
-        //возможно это не правильно.делаю такое первый раз.
-        //если не правильно - хотелось бы узнать почему
-        if (radius <= 0) {
-            throw new IllegalArgumentException("Радиус должен быть >0");
-        } else {
-            this.radius = radius;
-        }
+        //считаем,что вводятся корректные данные
+        this.radius = radius;
     }
 
     public Circle(double radius, String color) {
@@ -49,7 +44,6 @@ public class Circle extends Shape {
 
     @Override
     public String toString() {
-        //TODO переписать через stringBuffer
         return "Circle[" +
                 "radius=" + radius +
                 ", color='" + color + '\'' +

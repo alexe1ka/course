@@ -47,7 +47,6 @@ public class Book {
 
     @Override
     public String toString() {
-        //TODO переписать через stringBuffer
         return "book[" +
                 "name='" + name + '\'' +
                 ", authors=" + Arrays.toString(authors) +

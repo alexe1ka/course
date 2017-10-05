@@ -1,4 +1,4 @@
-package Triangle;
+package triangle;
 
 public class MyTriangle {
     private MyPoint v1;
@@ -8,20 +8,28 @@ public class MyTriangle {
     public MyTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
 //        TODO ПРОВЕРИТЬ НА ТРЕУГОЛЬНИК
         //любая сторона в треугольнике меньше суммы двух других и больше их разности
-        this.v1.setXY(x1, y1);
-        this.v2.setXY(x2, y2);
-        this.v3.setXY(x3, y3);
+        if (isTriangle(x1, y1, x2, y2, x3, y3)) {
+            this.v1.setXY(x1, y1);
+            this.v2.setXY(x2, y2);
+            this.v3.setXY(x3, y3);
+        } else {
+            throw new IllegalArgumentException("Это не треугольник!!!");
+        }
     }
 
     public MyTriangle(MyPoint v1, MyPoint v2, MyPoint v3) {
-        this.v1 = v1;
-        this.v2 = v2;
-        this.v3 = v3;
+        if (isTriangle(v1, v2, v3)) {
+            this.v1 = v1;
+            this.v2 = v2;
+            this.v3 = v3;
+        } else {
+            throw new IllegalArgumentException("Это не треугольник!!!");
+        }
+
     }
 
     @Override
     public String toString() {
-        //TODO переписать через stringBuffer
         return "MyTriangle{" +
                 "v1=" + v1 +
                 ", v2=" + v2 +
@@ -34,12 +42,24 @@ public class MyTriangle {
     }
 
     public String getType() {
+        double a = v1.distance(v2);
+        double b = v2.distance(v3);
+        double c = v1.distance(v3);
 //          equilateral - равносторонний
-//          isosceles - равнобедренный
-//          scalene - неравносторонний
-        String type = "";
+        if (a == b && b == c && c == a) {
+            return "equilateral";
+        }
 
-        return type;
+//          isosceles - равнобедренный
+        if (a == b || b == c || a == c) {
+            return "isosceles";
+        }
+
+//          scalene - неравносторонний
+        if (a != b && b != c && a != c) {
+            return "scalene";
+        }
+        return "Это не треугольник";
     }
 
 

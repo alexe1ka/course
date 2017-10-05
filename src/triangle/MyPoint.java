@@ -1,4 +1,4 @@
-package Triangle;
+package triangle;
 
 public class MyPoint {
     private int x = 0;
@@ -39,7 +39,6 @@ public class MyPoint {
 
     @Override
     public String toString() {
-        //TODO переписать через stringBuffer
         return "(" + x + "," + y + ')';
     }
 

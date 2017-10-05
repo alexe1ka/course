@@ -33,7 +33,6 @@ public class Author {
 
     @Override
     public String toString() {
-        //TODO переписать через stringBuffer
         return "Author[" +
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
