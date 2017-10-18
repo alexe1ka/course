@@ -10,8 +10,18 @@ public class Task2 {
         Scanner scanner = new Scanner(System.in);
         n = scanner.nextInt();
         scanner.close();
-        System.out.println("factRec = " + factRec(n));
-        System.out.println("factLoop = " + factLoop(n));
+        int factLoopValue, factRecValue;
+
+        long startFactRecTime = System.nanoTime();
+        factRecValue = factRec(n);
+        long factRecTime = System.nanoTime() - startFactRecTime;
+
+        long startFactLoopTime = System.nanoTime();
+        factLoopValue = factLoop(n);
+        long factLoopTime = System.nanoTime() - startFactLoopTime;
+
+        System.out.println("factRec = " + factRecValue + ", time: " + factRecTime);
+        System.out.println("factLoop = " + factLoopValue + ", time: " + factLoopTime);
     }
 
     //имеется ограничение на дипазаон,т.к тут int
