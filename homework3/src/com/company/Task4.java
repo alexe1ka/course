@@ -2,12 +2,12 @@ package com.company;
 
 import java.util.Random;
 
-public class Task4 {
-
+public class Task4 implements Task {
+    @Override
     public void makeWork() {
         taskB();
-
     }
+
 
     private void taskA() {
 

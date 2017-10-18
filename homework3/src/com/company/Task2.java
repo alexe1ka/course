@@ -2,8 +2,9 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Task2 {
+public class Task2 implements Task {
 
+    @Override
     public void makeWork() {
         int n = 0;
         System.out.println("Please insert n: ");
@@ -24,6 +25,7 @@ public class Task2 {
         System.out.println("factLoop = " + factLoopValue + ", time: " + factLoopTime);
     }
 
+
     //имеется ограничение на дипазаон,т.к тут int
     private int factRec(int n) {
         int res;
@@ -41,5 +43,4 @@ public class Task2 {
         }
         return res;
     }
-
 }

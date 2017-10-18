@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Task1 {
+public class Task1 implements Task {
 
+    @Override
     public void makeWork() {
-
         int n = 0;
         System.out.println("Please insert n: ");
         Scanner scanner = new Scanner(System.in);
@@ -41,8 +41,6 @@ public class Task1 {
         long arraysSortTime = System.nanoTime() - startArraysSortTime;
         System.out.println(Arrays.toString(array2));
         System.out.println("ArraysSort time : " + arraysSortTime + "\n");
-
-
     }
 
     //можно добавить boolean invert для выбора порядка сортировки
@@ -74,6 +72,4 @@ public class Task1 {
         }
         return arr;
     }
-
-
 }
