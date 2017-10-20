@@ -129,22 +129,33 @@ public class Task4 implements Task {
         int offset = -1;
         int[] arrrrray = createArrayWithRandomNumbers(20, boundOfRandom, offset);
         System.out.println(Arrays.toString(arrrrray));
+//        int[] countOfUniqueElemArr = new int[boundOfRandom];
         int[] countOfUniqueElemArr = new int[boundOfRandom];
         for (int element : arrrrray) {
             countOfUniqueElemArr[element - offset]++;
         }
 
-
-        for (int i = 0; i < countOfUniqueElemArr.length; i++) {
-            //TODO вывод
+        int maxCount = Integer.MIN_VALUE;
+        for (int uniqueElement : countOfUniqueElemArr) {
+            if (uniqueElement > maxCount) {
+                maxCount = uniqueElement;
+            }
         }
-        System.out.println(Arrays.toString(countOfUniqueElemArr));
 
+        System.out.println(Arrays.toString(countOfUniqueElemArr));
+        System.out.println(maxCount);
+
+        System.out.println("Max count of elem is: " + maxCount+". Elem is:");
+        for (int i = 0; i < countOfUniqueElemArr.length; i++) {
+            if (countOfUniqueElemArr[i] == maxCount) {
+                System.out.println((i + offset));
+            }
+        }
     }
 
 
     //метод для создания массива длины arraySize,заполненного случайными числами из диапазона [0,boundOFRandom]+offset
-    //смещение нужно в задании c и d
+    //смещение смещает диапазон [0,bound] к диапазону [0+offset,bound+offset] 
     private int[] createArrayWithRandomNumbers(int arraySize, int boundOfRandom, int offset) {
         int[] array = new int[arraySize];
         Random firstRandom = new Random();
