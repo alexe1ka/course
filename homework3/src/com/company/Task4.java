@@ -9,11 +9,17 @@ public class Task4 implements Task {
     public void makeWork() {
         //все доп.методы написаны свои,
         // т.к насколько я понял пользоваться Collections нельзя
-//        a();
-//        b();
-//        c();
-//        d();
-//        e();
+        System.out.println("taskA");
+        a();
+        System.out.println("taskB");
+        b();
+        System.out.println("taskC");
+        c();
+        System.out.println("taskD");
+        d();
+        System.out.println("taskE");
+        e();
+        System.out.println("taskF");
         f();
 
 
@@ -129,7 +135,6 @@ public class Task4 implements Task {
         int offset = -1;
         int[] arrrrray = createArrayWithRandomNumbers(20, boundOfRandom, offset);
         System.out.println(Arrays.toString(arrrrray));
-//        int[] countOfUniqueElemArr = new int[boundOfRandom];
         int[] countOfUniqueElemArr = new int[boundOfRandom];
         for (int element : arrrrray) {
             countOfUniqueElemArr[element - offset]++;
@@ -145,7 +150,7 @@ public class Task4 implements Task {
         System.out.println(Arrays.toString(countOfUniqueElemArr));
         System.out.println(maxCount);
 
-        System.out.println("Max count of elem is: " + maxCount+". Elem is:");
+        System.out.println("Max count of elem is: " + maxCount + ". Elem is:");
         for (int i = 0; i < countOfUniqueElemArr.length; i++) {
             if (countOfUniqueElemArr[i] == maxCount) {
                 System.out.println((i + offset));
@@ -155,7 +160,7 @@ public class Task4 implements Task {
 
 
     //метод для создания массива длины arraySize,заполненного случайными числами из диапазона [0,boundOFRandom]+offset
-    //смещение смещает диапазон [0,bound] к диапазону [0+offset,bound+offset] 
+    //смещение смещает диапазон [0,bound] к диапазону [0+offset,bound+offset]
     private int[] createArrayWithRandomNumbers(int arraySize, int boundOfRandom, int offset) {
         int[] array = new int[arraySize];
         Random firstRandom = new Random();
