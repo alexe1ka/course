@@ -11,7 +11,7 @@ public class Task2 implements Task {
         Scanner scanner = new Scanner(System.in);
         n = scanner.nextInt();
         scanner.close();
-        int factLoopValue, factRecValue;
+        long factLoopValue, factRecValue;
 
         long startFactRecTime = System.nanoTime();
         factRecValue = factRec(n);
@@ -27,8 +27,8 @@ public class Task2 implements Task {
 
 
     //имеется ограничение на дипазаон,т.к тут int
-    private int factRec(int n) {
-        int res;
+    private long factRec(int n) {
+        long res;
         if (n == 0) {
             return 1;
         }
@@ -36,8 +36,8 @@ public class Task2 implements Task {
         return res;
     }
 
-    private int factLoop(int n) {
-        int res = n;
+    private long factLoop(int n) {
+        long res = n;
         for (int i = n - 1; i > 0; i--) {
             res *= i;
         }

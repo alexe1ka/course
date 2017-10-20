@@ -44,7 +44,8 @@ public class Task1 implements Task {
     }
 
     //можно добавить boolean invert для выбора порядка сортировки
-    private int[] bubbleSort(int[] arr) {
+    //public static т.к. решил эти методом отсортировать элементы в строке в двумерном массиве.задание 5d
+    public static int[] bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
@@ -68,7 +69,6 @@ public class Task1 implements Task {
             int tmp = arr[min];
             arr[min] = arr[i];
             arr[i] = tmp;
-
         }
         return arr;
     }

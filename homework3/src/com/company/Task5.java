@@ -1,52 +1,104 @@
 package com.company;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Random;
 
 public class Task5 implements Task {
     @Override
     public void makeWork() {
-        a();
+//        a();
+//        b();
+        c();
+//        d();
+
     }
 
     private void a() {
         int[][] arr = createTwoDimArrayWithRandomNumbers(8, 8, 100, 1);
-//        System.out.println(Arrays.deepToString(arr));
-        int sum = 0;
-        int mult = 1;//переполнение
-        seeArray(arr);
+        int sumMain = 0, sumSide = 0;
+        long multMain = 1L, multSide = 1L;
+
+        seeArray(arr); //своя функция для отображения двумерного массива на экране
 
         //элементы главной диагонали
         for (int i = 0; i < arr.length; i++) {
-            sum += arr[i][i];
-            mult *= arr[i][i];
-            System.out.println(arr[i][i]);
+            sumMain += arr[i][i];
+            multMain *= arr[i][i];
+//            System.out.println(arr[i][i]);
         }
         System.out.println();
 
         //элементы побочной диагонали
         for (int i = 0; i < arr.length; i++) {
-            sum += arr[i][arr.length - i - 1];
-            mult *= arr[i][arr.length - i - 1];
-            System.out.println(arr[i][arr.length - i - 1]);
+            sumSide += arr[i][arr.length - i - 1];
+            multSide *= arr[i][arr.length - i - 1];
+//            System.out.println(arr[i][arr.length - i - 1]);
         }
-        System.out.println("sum = " + sum + " ,mult = " + mult);
+        System.out.println("sumMainDiag = " + sumMain + ", multMainDiag = " + multMain + " ,sumSideDiag=" + sumSide + ", multSideDiag = " + multSide);
     }
 
     private void b() {
+        int[][] arr = createTwoDimArrayWithRandomNumbers(8, 5, 200, -100);
+        seeArray(arr);
+        int max = arr[0][0];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] > max) {
+                    max = arr[i][j];
+                }
+            }
+        }
+        System.out.print("Max elem is " + max + ". His index(s): ");
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] == max) {
+                    System.out.print("[" + i + "," + j + "] ");
+                }
+            }
+        }
 
     }
 
     private void c() {
+        int[][] arr = createTwoDimArrayWithRandomNumbers(8, 5, 21, -10);
+        seeArray(arr);
 
+        long maxMult = 1, mult = 1;
+        int index = -1;
+        System.out.println();
+        for (int i = 0; i < arr.length; i++) {
+            mult = 1;
+            for (int j = 0; j < arr[i].length; j++) {
+                mult *= arr[i][j];
+            }
+            System.out.println("Mult: " + Math.abs(mult) + " .index: " + i);
+
+            if (Math.abs(mult) > maxMult) {
+                maxMult = Math.abs(mult);
+                index = i;
+//                System.out.println("maxMult: " + maxMult + " .index" + i);
+            }
+        }
+
+        //TODO не работает если несколько строк.ВЫВОДИТ ТОЛЬКО ОДНУ
+        System.out.println("max mult in string " + index + " .value is " + Math.abs(maxMult));
     }
 
     private void d() {
-
+        int[][] arr = createTwoDimArrayWithRandomNumbers(10, 7, 100, 0);
+        seeArray(arr);
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i] = Task1.bubbleSort(arr[i]);
+            }
+        }
+        System.out.println("\n" + "Sorted arr:");
+        seeArray(arr);
     }
 
-    private int[][] createTwoDimArrayWithRandomNumbers(int colSize, int rowSize, int boundOfRandom, int offset) {
-        int[][] arr = new int[colSize][rowSize];
+    private int[][] createTwoDimArrayWithRandomNumbers(int rowSize, int colSize, int boundOfRandom, int offset) {
+        int[][] arr = new int[rowSize][colSize];
         Random random = new Random();
         for (int i = 0; i < rowSize; i++) {
             for (int j = 0; j < colSize; j++) {
@@ -56,7 +108,9 @@ public class Task5 implements Task {
         return arr;
     }
 
+
     //более удобный вывод массива на экран
+    //public static т.к. использую в task6
     private void seeArray(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
