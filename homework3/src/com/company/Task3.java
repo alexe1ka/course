@@ -1,7 +1,7 @@
 package com.company;
 
 public class Task3 implements Task {
-
+//последняя буква - индекс в задании
     @Override
     public void makeWork() {
         paintSharpRectangle();
