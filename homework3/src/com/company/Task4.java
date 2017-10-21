@@ -59,8 +59,6 @@ public class Task4 implements Task {
         }
         System.out.println("Count of even elem: " + even);
         System.out.println("Count of odd elem: " + (array.length - even));
-
-
     }
 
     private void c() {
@@ -73,8 +71,6 @@ public class Task4 implements Task {
             }
         }
         System.out.println(Arrays.toString(array));
-
-
     }
 
     private void d() {
