@@ -5,7 +5,6 @@ public class TestTasks {
 
     public static void main(String[] args) {
         //большинство из этих задач решаются намного проще с помощью коллекций
-        //TODO проверить диапазоны в 4 и 5 заданиях
         System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t----------ЗАДАНИЕ 1---------");
         Task task1 = new Task1();
         task1.makeWork();
