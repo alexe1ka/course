@@ -7,15 +7,19 @@ import java.util.Random;
 public class Task5 implements Task {
     @Override
     public void makeWork() {
-//        a();
-//        b();
+        System.out.println("taskA");
+        a();
+        System.out.println("taskB");
+        b();
+        System.out.println("taskC");
         c();
-//        d();
+        System.out.println("taskD");
+        d();
 
     }
 
     private void a() {
-        int[][] arr = createTwoDimArrayWithRandomNumbers(8, 8, 100, 1);
+        int[][] arr = createTwoDimArrayWithRandomNumbers(8, 8, 99, 1);
         int sumMain = 0, sumSide = 0;
         long multMain = 1L, multSide = 1L;
 
@@ -39,7 +43,7 @@ public class Task5 implements Task {
     }
 
     private void b() {
-        int[][] arr = createTwoDimArrayWithRandomNumbers(8, 5, 200, -100);
+        int[][] arr = createTwoDimArrayWithRandomNumbers(8, 5, 199, -99);
         seeArray(arr);
         int max = arr[0][0];
         for (int i = 0; i < arr.length; i++) {
@@ -53,7 +57,7 @@ public class Task5 implements Task {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
                 if (arr[i][j] == max) {
-                    System.out.print("[" + i + "," + j + "] ");
+                    System.out.println("[" + i + "," + j + "] ");
                 }
             }
         }
@@ -64,29 +68,36 @@ public class Task5 implements Task {
         int[][] arr = createTwoDimArrayWithRandomNumbers(8, 5, 21, -10);
         seeArray(arr);
 
-        long maxMult = 1, mult = 1;
-        int index = -1;
+        long maxMult = Integer.MIN_VALUE;
+        long mult = 1;
+        long[] multArr = new long[arr.length];
+
         System.out.println();
+
         for (int i = 0; i < arr.length; i++) {
             mult = 1;
             for (int j = 0; j < arr[i].length; j++) {
                 mult *= arr[i][j];
             }
-            System.out.println("Mult: " + Math.abs(mult) + " .index: " + i);
+            multArr[i] = Math.abs(mult);
+
 
             if (Math.abs(mult) > maxMult) {
                 maxMult = Math.abs(mult);
-                index = i;
-//                System.out.println("maxMult: " + maxMult + " .index" + i);
+            }
+        }
+//        System.out.println("multArr: " + Arrays.toString(multArr));
+        System.out.println("max mult is " + maxMult + " in string(s): ");
+        for (int i = 0; i < multArr.length; i++) {
+            if (multArr[i] == maxMult) {
+                System.out.println(i);
             }
         }
 
-        //TODO не работает если несколько строк.ВЫВОДИТ ТОЛЬКО ОДНУ
-        System.out.println("max mult in string " + index + " .value is " + Math.abs(maxMult));
     }
 
     private void d() {
-        int[][] arr = createTwoDimArrayWithRandomNumbers(10, 7, 100, 0);
+        int[][] arr = createTwoDimArrayWithRandomNumbers(10, 7, 101, 0);
         seeArray(arr);
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {

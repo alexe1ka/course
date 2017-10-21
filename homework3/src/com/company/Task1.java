@@ -8,11 +8,11 @@ public class Task1 implements Task {
 
     @Override
     public void makeWork() {
-        int n = 0;
-        System.out.println("Please insert n: ");
-        Scanner scanner = new Scanner(System.in);
-        n = scanner.nextInt();
-        scanner.close();
+        int n = 5;
+//        System.out.println("Please insert n: ");
+//        Scanner scanner = new Scanner(System.in);
+//        n = scanner.nextInt();
+//        scanner.close();
         int[] array = new int[n];
         Random random = new Random();
         for (int i = 0; i < array.length; i++) {
@@ -23,23 +23,23 @@ public class Task1 implements Task {
         int[] array2 = Arrays.copyOf(array, array.length);
 
 
-        System.out.println("Исходный" + Arrays.toString(array));
+        System.out.println("Исходный: " + Arrays.toString(array));
         long startBubbleTime = System.nanoTime();
-        System.out.println(Arrays.toString(bubbleSort(array)));
+        System.out.println("Sorted: " + Arrays.toString(bubbleSort(array)));
         long bubbleTime = System.nanoTime() - startBubbleTime;
         System.out.println("BubbleSort time : " + bubbleTime + "\n");
 
-        System.out.println("Исходный" + Arrays.toString(array1));
+        System.out.println("Исходный: " + Arrays.toString(array1));
         long startSelectionTime = System.nanoTime();
-        System.out.println(Arrays.toString(selectionSort(array1)));
+        System.out.println("Sorted: " + Arrays.toString(selectionSort(array1)));
         long selectionTime = System.nanoTime() - startSelectionTime;
         System.out.println("SelectionSort time : " + selectionTime + "\n");
 
-        System.out.println("Исходный" + Arrays.toString(array2));
+        System.out.println("Исходный: " + Arrays.toString(array2));
         long startArraysSortTime = System.nanoTime();
         Arrays.sort(array2);
         long arraysSortTime = System.nanoTime() - startArraysSortTime;
-        System.out.println(Arrays.toString(array2));
+        System.out.println("Sorted: " + Arrays.toString(array2));
         System.out.println("ArraysSort time : " + arraysSortTime + "\n");
     }
 

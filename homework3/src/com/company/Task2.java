@@ -6,11 +6,11 @@ public class Task2 implements Task {
 
     @Override
     public void makeWork() {
-        int n = 0;
-        System.out.println("Please insert n: ");
-        Scanner scanner = new Scanner(System.in);
-        n = scanner.nextInt();
-        scanner.close();
+        int n = 10;
+//        System.out.println("Please insert n: ");
+//        Scanner scanner = new Scanner(System.in);
+//        n = scanner.nextInt();
+//        scanner.close();
         long factLoopValue, factRecValue;
 
         long startFactRecTime = System.nanoTime();

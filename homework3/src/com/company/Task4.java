@@ -49,7 +49,7 @@ public class Task4 implements Task {
     }
 
     private void b() {
-        int[] array = createArrayWithRandomNumbers(20, 10, 0);
+        int[] array = createArrayWithRandomNumbers(20, 11, 0);
         System.out.println(Arrays.toString(array));
         int even = 0;
         for (int elem : array) {
@@ -62,7 +62,7 @@ public class Task4 implements Task {
     }
 
     private void c() {
-        int[] array = createArrayWithRandomNumbers(10, 99, 1);//изначально [0,99]. если +1 то [1,100]
+        int[] array = createArrayWithRandomNumbers(10, 100, 1);//изначально [0,99]. если +1 то [1,100]
         System.out.println(Arrays.toString(array));
 
         for (int i = 0; i < array.length; i++) {
@@ -74,7 +74,7 @@ public class Task4 implements Task {
     }
 
     private void d() {
-        int[] array = createArrayWithRandomNumbers(15, 101, -50);
+        int[] array = createArrayWithRandomNumbers(15, 102, -51);
         System.out.println(Arrays.toString(array));
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
@@ -99,9 +99,9 @@ public class Task4 implements Task {
     }
 
     private void e() {
-        int[] firstArray = createArrayWithRandomNumbers(10, 10, 0);
+        int[] firstArray = createArrayWithRandomNumbers(10, 11, 0);
 
-        int[] secondArray = createArrayWithRandomNumbers(10, 10, 0);
+        int[] secondArray = createArrayWithRandomNumbers(10, 11, 0);
 
         System.out.println(Arrays.toString(firstArray) + " .avg = " + average(firstArray));
         System.out.println(Arrays.toString(secondArray) + " .avg = " + average(secondArray));
@@ -143,8 +143,8 @@ public class Task4 implements Task {
             }
         }
 
-        System.out.println(Arrays.toString(countOfUniqueElemArr));
-        System.out.println(maxCount);
+//        System.out.println(Arrays.toString(countOfUniqueElemArr));
+//        System.out.println(maxCount);
 
         System.out.println("Max count of elem is: " + maxCount + ". Elem is:");
         for (int i = 0; i < countOfUniqueElemArr.length; i++) {
