@@ -2,7 +2,7 @@ package com.company.mylist;
 
 public class Node<E> {
     private E element;
-    private Node nextNode;
+    private Node<E> nextNode;
 
     public E getElement() {
         return element;
@@ -12,11 +12,11 @@ public class Node<E> {
         this.element = element;
     }
 
-    public Node getNextNode() {
+    public Node<E> getNextNode() {
         return nextNode;
     }
 
-    public void setNextNode(Node nextNode) {
+    public void setNextNode(Node<E> nextNode) {
         this.nextNode = nextNode;
     }
 }

@@ -1,6 +1,6 @@
 package com.company.mylist;
 
-public interface ILinkedList<E> extends Iterable {
+public interface ILinkedList<E> extends Iterable<E> {
     public void add(E element);
 
     public void add(int index, E element);
@@ -17,7 +17,7 @@ public interface ILinkedList<E> extends Iterable {
 
     public int size();
 
-    public E[] toArray();
+    public Object[] toArray();//TODO заменить на object
 
     public String toString();
 }
