@@ -25,7 +25,18 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public void add(int index, E element) {
-
+        checkIndex(index);
+        Node<E> newNode = new Node<>();
+        newNode.setElement(element);
+        Node<E> currentNode = getNodeByIndex(index);
+        if (index == 0) {
+            head = newNode;
+            newNode.setNextNode(currentNode);
+        } else {
+            getNodeByIndex(index - 1).setNextNode(newNode);
+            newNode.setNextNode(currentNode);
+        }
+        size++;
     }
 
     @Override
@@ -82,11 +93,10 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     }
 
 
-    private boolean checkIndex(int index) {
+    private void checkIndex(int index) {
         if (!(index >= 0 && index <= size)) {
             throw new IndexOutOfBoundsException();
         }
-        return true;
     }
 
     private Node<E> getNodeByIndex(int index) {
