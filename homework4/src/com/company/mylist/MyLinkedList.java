@@ -25,12 +25,16 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public void add(int index, E element) {//добавляет по индексу,смещая элемент с текущим индексом вправо
-        checkIndex(index);
+        checkPositionIndex(index);
         Node<E> newNode = new Node<>();
         newNode.setElement(element);
         Node<E> currentNode = getNodeByIndex(index);
         if (index == 0) {
             head = newNode;
+            newNode.setNextNode(currentNode);
+        } else if (index == size) {
+            getNodeByIndex(index - 1).setNextNode(newNode);
+            tail = newNode;
             newNode.setNextNode(currentNode);
         } else {
             getNodeByIndex(index - 1).setNextNode(newNode);
@@ -53,13 +57,13 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public E get(int index) {
-        checkIndex(index);
+        checkPositionIndex(index);
         return getNodeByIndex(index).getElement();
     }
 
     @Override
     public E set(int index, E element) {
-        checkIndex(index);
+        checkPositionIndex(index);
         Node<E> currentNode = getNodeByIndex(index);
         E value = currentNode.getElement();
         currentNode.setElement(element);
@@ -85,28 +89,39 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         } else {
             throw new UnsupportedOperationException();
         }
-        return -1; //-1  - признак ошибки
+        return -1; //-1  - ПРИЗНАК ОТСУТСТВИЯ ДАННОГО ЭЛЕМЕНТА
     }
 
     @Override
     public E remove(int index) {
+        checkElementIndex(index);
         Node<E> currentRemovedNode = getNodeByIndex(index);
         if (index == 0) {
-            head = head.getNextNode();
-            return currentRemovedNode.getElement();
-        } else if (index == size) {
+            if (head.getNextNode() != null) {
+                head = head.getNextNode();
+                size--;
+                return currentRemovedNode.getElement();
+            }
+        } else if (index == size - 1) {
             getNodeByIndex(index - 1).setNextNode(null);
+            size--;
             return currentRemovedNode.getElement();
-        } else {
+        } else if (index >= 0 && index < size) {
             getNodeByIndex(index - 1).setNextNode(currentRemovedNode.getNextNode());
+            size--;
             return currentRemovedNode.getElement();
         }
+        return null;
     }
 
     @Override
     public Object[] toArray() {
-
-        return new Object[0];
+        Object[] result = new Object[size];
+        int i = 0;
+        for (Node<E> node = head; node != null; node = node.getNextNode()) {
+            result[i++] = node.getElement();
+        }
+        return result;
     }
 
     @Override
@@ -114,7 +129,6 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         Iterator<E> it = iterator();
         if (!it.hasNext())
             return "[]";
-
         StringBuilder sb = new StringBuilder();
         sb.append('[');
         for (; ; ) {
@@ -148,11 +162,18 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     }
 
 
-    private void checkIndex(int index) {
+    private void checkPositionIndex(int index) {//позиция [size] это элемент за границей массива.последний элемент добавляется как раз на индекс size
         if (!(index >= 0 && index <= size)) {
             throw new IndexOutOfBoundsException();
         }
     }
+
+    private void checkElementIndex(int index) {//удалять элементы мы можем с индексами с 0 до size-1
+        if (!(index >= 0 && index < size)) {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
 
     private Node<E> getNodeByIndex(int index) {
         Node<E> node = head;
