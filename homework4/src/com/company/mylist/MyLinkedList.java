@@ -9,8 +9,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public void add(E element) {
-        Node<E> node = new Node<>();
-        node.setElement(element);
+        Node<E> node = new Node<>(element);
 
         if (tail == null)           //если список пуст
         {                           //то указываем ссылки начала и конца на новый элемент
