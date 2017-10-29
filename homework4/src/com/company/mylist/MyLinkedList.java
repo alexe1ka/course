@@ -11,13 +11,12 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     public void add(E element) {
         Node<E> node = new Node<>(element);
 
-        if (tail == null)           //если список пуст
-        {                           //то указываем ссылки начала и конца на новый элемент
-            head = node;               //т.е. список теперь состоит из одного элемента
-            tail = node;
+        if (tail != null) {
+            tail.next = node;          //иначе "старый" последний элемент теперь ссылается на новый
+            tail = node;               //а в указатель на последний элемент записываем адрес нового
         } else {
-            tail.setNextNode(node);          //иначе "старый" последний элемент теперь ссылается на новый
-            tail = node;               //а в указатель на последний элемент записываем адрес нового элемента
+            head = node;            // если список пуст то указываем ссылки начала и конца на новый элемент
+            tail = head;            //т.е. список теперь состоит из одного элемента
         }
         size++;
     } //добавляет в конец
@@ -25,19 +24,18 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     @Override
     public void add(int index, E element) {//добавляет по индексу,смещая элемент с текущим индексом вправо
         checkPositionIndex(index);
-        Node<E> newNode = new Node<>();
-        newNode.setElement(element);
+        Node<E> newNode = new Node<>(element);
         Node<E> currentNode = getNodeByIndex(index);
         if (index == 0) {
             head = newNode;
-            newNode.setNextNode(currentNode);
+            newNode.next = currentNode;
         } else if (index == size) {
-            getNodeByIndex(index - 1).setNextNode(newNode);
+            getNodeByIndex(index - 1).next = newNode;
             tail = newNode;
-            newNode.setNextNode(currentNode);
+            newNode.next = currentNode;
         } else {
-            getNodeByIndex(index - 1).setNextNode(newNode);
-            newNode.setNextNode(currentNode);
+            getNodeByIndex(index - 1).next = newNode;
+            newNode.next = currentNode;
         }
         size++;
     }
@@ -45,9 +43,9 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     @Override
     public void clear() {
         for (Node<E> node = head; node != null; ) {
-            Node<E> next = head.getNextNode();
-            node.setNextNode(null);
-            node.setElement(null);
+            Node<E> next = head.next;
+            node.next = null;
+            node.elem = null;
             node = next;
         }
         head = tail = null;
@@ -57,15 +55,15 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     @Override
     public E get(int index) {
         checkPositionIndex(index);
-        return getNodeByIndex(index).getElement();
+        return getNodeByIndex(index).elem;
     }
 
     @Override
     public E set(int index, E element) {
         checkPositionIndex(index);
         Node<E> currentNode = getNodeByIndex(index);
-        E value = currentNode.getElement();
-        currentNode.setElement(element);
+        E value = currentNode.elem;
+        currentNode.elem = element;
         return value;
     }
 
@@ -79,8 +77,8 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         //возвращает индекс первого вхождения
         int index = 0;
         if (element != null) {
-            for (Node<E> node = head; node != null; node = node.getNextNode()) {
-                if (element.equals(node.getElement())) {
+            for (Node<E> node = head; node != null; node = node.next) {
+                if (element.equals(node.elem)) {
                     return index;
                 }
                 index++;
@@ -96,19 +94,19 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         checkElementIndex(index);
         Node<E> currentRemovedNode = getNodeByIndex(index);
         if (index == 0) {
-            if (head.getNextNode() != null) {
-                head = head.getNextNode();
+            if (head.next != null) {
+                head = head.next;
                 size--;
-                return currentRemovedNode.getElement();
+                return currentRemovedNode.elem;
             }
         } else if (index == size - 1) {
-            getNodeByIndex(index - 1).setNextNode(null);
+            getNodeByIndex(index - 1).next = (null);
             size--;
-            return currentRemovedNode.getElement();
+            return currentRemovedNode.elem;
         } else if (index >= 0 && index < size) {
-            getNodeByIndex(index - 1).setNextNode(currentRemovedNode.getNextNode());
+            getNodeByIndex(index - 1).next = (currentRemovedNode.next);
             size--;
-            return currentRemovedNode.getElement();
+            return currentRemovedNode.elem;
         }
         return null;
     }
@@ -117,8 +115,8 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     public Object[] toArray() {
         Object[] result = new Object[size];
         int i = 0;
-        for (Node<E> node = head; node != null; node = node.getNextNode()) {
-            result[i++] = node.getElement();
+        for (Node<E> node = head; node != null; node = node.next) {
+            result[i++] = node.elem;
         }
         return result;
     }
@@ -154,7 +152,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
                 if (!hasNext()) {
                     return null;
                 }
-                return getNodeByIndex(currentIndex++).getElement();
+                return getNodeByIndex(currentIndex++).elem;
             }
         };
         return iterator;
@@ -177,8 +175,22 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     private Node<E> getNodeByIndex(int index) {
         Node<E> node = head;
         for (int i = 0; i < index; i++)
-            node = node.getNextNode();
+            node = node.next;
         return node;
+    }
+
+    private static class Node<E> {
+        E elem;
+        Node<E> next;
+
+        public Node(E item) {
+            this.elem = item;
+        }
+
+        Node(E element, Node<E> next) {
+            this.elem = element;
+            this.next = next;
+        }
     }
 }
 

@@ -10,11 +10,11 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-//        testMyLinkedList();
-//        compareMyLinkedListAndStandardLinkedList();
-
-        TestCollection testCollection = new TestCollection();
-        testCollection.makeWork();
+        testMyLinkedList();
+        compareMyLinkedListAndStandardLinkedList();
+//
+//        TestCollection testCollection = new TestCollection();
+//        testCollection.makeWork();
         //
     }
 
@@ -68,45 +68,65 @@ public class Main {
     }
 
     public static void compareMyLinkedListAndStandardLinkedList() {
-        MyLinkedList<MyPoint> myLinkedList = new MyLinkedList<>();
+        MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+        LinkedList<Integer> standardLinkedList = new LinkedList<>();
+
+
         long startAddToMyList = System.nanoTime();
-        for (int i = 0; i <= 100000; i++) {
-            myLinkedList.add(new MyPoint(new Random().nextInt(10), new Random().nextInt(10)));
+        for (int i = 0; i <= 10000; i++) {
+            myLinkedList.add(i);
         }
         long addToMyListTime = System.nanoTime() - startAddToMyList;
+        System.out.println("Time of adding element to myLinkedList: " + addToMyListTime);
 
 
-        List<MyPoint> standardLinkedList = new LinkedList<>();
         long startAddToStandardList = System.nanoTime();
-        for (int i = 0; i <= 100000; i++) {
-            standardLinkedList.add(new MyPoint(new Random().nextInt(10), new Random().nextInt(10)));
+        for (int i = 0; i <= 10000; i++) {
+            standardLinkedList.add(i);
         }
         long addToStandardListTime = System.nanoTime() - startAddToStandardList;
-        System.out.println("Time of adding element to myLinkedList: " + addToMyListTime);
         System.out.println("Time of adding element to standard list: " + addToStandardListTime);
 
 
-        long startFindToMyList = System.nanoTime();
-        myLinkedList.indexOf(new MyPoint(new Random().nextInt(10), new Random().nextInt(10)));
-        long findToMyListTime = System.nanoTime() - startFindToMyList;
-
-        long startFindInStandardList = System.nanoTime();
-        standardLinkedList.indexOf(new MyPoint(new Random().nextInt(10), new Random().nextInt(10)));
-        long findStandardListTime = System.nanoTime() - startFindInStandardList;
-
-        System.out.println("Time of finding element in myLinkedList: " + findToMyListTime);
-        System.out.println("Time of finding element in standardLinkedList: " + findStandardListTime);
-
-
-        long startDeleteElementInMyList = System.nanoTime();
-        myLinkedList.remove(myLinkedList.size() / 2);
-        long deleteInMyListTime = System.nanoTime() - startDeleteElementInMyList;
-
-        long startDeleteElementInStandardList = System.nanoTime();
-        standardLinkedList.remove(standardLinkedList.size() / 2);
-        long deleteInStandardListTime = System.nanoTime() - startDeleteElementInStandardList;
-
-        System.out.println("Time of deleting element in myLinkedList: " + deleteInMyListTime);
-        System.out.println("Time of deleting element in standardLinkedList: " + deleteInStandardListTime);
+//        MyLinkedList<MyPoint> myLinkedList = new MyLinkedList<>();
+//        long startAddToMyList = System.nanoTime();
+//        for (int i = 0; i <= 100000; i++) {
+//            myLinkedList.add(new MyPoint(new Random().nextInt(10), new Random().nextInt(10)));
+//        }
+//        long addToMyListTime = System.nanoTime() - startAddToMyList;
+//
+//
+//        List<MyPoint> standardLinkedList = new LinkedList<>();
+//        long startAddToStandardList = System.nanoTime();
+//        for (int i = 0; i <= 100000; i++) {
+//            standardLinkedList.add(new MyPoint(new Random().nextInt(10), new Random().nextInt(10)));
+//        }
+//        long addToStandardListTime = System.nanoTime() - startAddToStandardList;
+//        System.out.println("Time of adding element to myLinkedList: " + addToMyListTime);
+//        System.out.println("Time of adding element to standard list: " + addToStandardListTime);
+//
+//
+//        long startFindToMyList = System.nanoTime();
+//        myLinkedList.indexOf(new MyPoint(new Random().nextInt(10), new Random().nextInt(10)));
+//        long findToMyListTime = System.nanoTime() - startFindToMyList;
+//
+//        long startFindInStandardList = System.nanoTime();
+//        standardLinkedList.indexOf(new MyPoint(new Random().nextInt(10), new Random().nextInt(10)));
+//        long findStandardListTime = System.nanoTime() - startFindInStandardList;
+//
+//        System.out.println("Time of finding element in myLinkedList: " + findToMyListTime);
+//        System.out.println("Time of finding element in standardLinkedList: " + findStandardListTime);
+//
+//
+//        long startDeleteElementInMyList = System.nanoTime();
+//        myLinkedList.remove(myLinkedList.size() / 2);
+//        long deleteInMyListTime = System.nanoTime() - startDeleteElementInMyList;
+//
+//        long startDeleteElementInStandardList = System.nanoTime();
+//        standardLinkedList.remove(standardLinkedList.size() / 2);
+//        long deleteInStandardListTime = System.nanoTime() - startDeleteElementInStandardList;
+//
+//        System.out.println("Time of deleting element in myLinkedList: " + deleteInMyListTime);
+//        System.out.println("Time of deleting element in standardLinkedList: " + deleteInStandardListTime);
     }
 }

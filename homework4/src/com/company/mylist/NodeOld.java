@@ -1,17 +1,19 @@
 package com.company.mylist;
 
-public class Node<E> {
+public class NodeOld<E> {
     private E element;
-    private Node<E> nextNode;
+    private NodeOld<E> nextNode;
 
-    public Node() {
+
+    //НЕ ИСПОЛЬЗУЕТСЯ
+    public NodeOld() {
     }
 
-    public Node(E element) {
+    public NodeOld(E element) {
         this.element = element;
     }
 
-    public Node(E element, Node<E> nextNode) {
+    public NodeOld(E element, NodeOld<E> nextNode) {
         this.element = element;
         this.nextNode = nextNode;
     }
@@ -24,11 +26,11 @@ public class Node<E> {
         this.element = element;
     }
 
-    public Node<E> getNextNode() {
+    public NodeOld<E> getNextNode() {
         return nextNode;
     }
 
-    public void setNextNode(Node<E> nextNode) {
+    public void setNextNode(NodeOld<E> nextNode) {
         this.nextNode = nextNode;
     }
 }
