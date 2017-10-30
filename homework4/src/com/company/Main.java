@@ -10,9 +10,9 @@ public class Main {
         testMyLinkedList();
         System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t Compare my list and standard linkedList");
         compareMyLinkedListAndStandardLinkedList();
-
-//        TestCollection testCollection = new TestCollection();
-//        testCollection.makeWork();
+        
+        TestCollection testCollection = new TestCollection();
+        testCollection.makeWork();
 
     }
 
@@ -71,11 +71,11 @@ public class Main {
         LinkedList<MyPoint> standardLinkedList = new LinkedList<>();
 
 
+        //данные,которые будут соваться в массив
         ArrayList<Integer> randomX = new ArrayList<>();
         for (int i = 0; i <= 100000; i++) {
             randomX.add(new Random().nextInt(10));
         }
-
         ArrayList<Integer> randomY = new ArrayList<>();
         for (int i = 0; i <= 100000; i++) {
             randomY.add(new Random().nextInt(10));
@@ -131,7 +131,6 @@ public class Main {
         }
         long addStartToStandardListTime = System.nanoTime() - startAddToStartStandardList;
         System.out.println("Time of adding element to start to standard list: " + addStartToStandardListTime);
-
 
 
         //search
