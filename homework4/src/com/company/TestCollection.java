@@ -7,18 +7,24 @@ import java.util.*;
 public class TestCollection {
 
     public void makeWork() {
-//        testA();
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t test lists");
+        testA();
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t test set's");
         testB();
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t test maps");
+        testC();
     }
 
     private void testA() {
         ArrayList<Integer> arrayList = new ArrayList<>();
         LinkedList<Integer> linkedList = new LinkedList<>();
 
+
+        Random random = new Random();
         //заполнение с начала
         long startAddToArrayList = System.nanoTime();
         for (int i = 0; i <= 100000; i++) {
-            arrayList.add(new Random().nextInt(1000));
+            arrayList.add(random.nextInt(1000));
         }
         long addTimeToArrayList = System.nanoTime() - startAddToArrayList;
         System.out.println("Add to arrayList time: " + addTimeToArrayList);
@@ -26,7 +32,7 @@ public class TestCollection {
 
         long startAddToLinkedList = System.nanoTime();
         for (int i = 0; i <= 100000; i++) {
-            linkedList.add(new Random().nextInt(1000));
+            linkedList.add(random.nextInt(1000));
         }
         long addTimeToLinkedList = System.nanoTime() - startAddToLinkedList;
         System.out.println("Add to linkedList time: " + addTimeToLinkedList);
@@ -158,25 +164,38 @@ public class TestCollection {
 
         //search
         long searchHashSet = System.nanoTime();
-
+        hashSet.contains(new Random().nextInt(1000));
         long searchHashSetTime = System.nanoTime() - searchHashSet;
+        System.out.println("Search in hash set time: " + searchHashSetTime);
 
 
         long searchLinkedHashSet = System.nanoTime();
-
+        linkedHashSet.contains(new Random().nextInt(1000));
         long searchLinkedHashSetTime = System.nanoTime() - searchLinkedHashSet;
+        System.out.println("Search in linked hash set time: " + searchHashSetTime);
 
 
         long searchTreeSet = System.nanoTime();
-
+        treeSet.contains(new Random().nextInt(1000));
         long searchTreeSetTime = System.nanoTime() - searchTreeSet;
+        System.out.println("Search in tree set time: " + searchHashSetTime);
 
 
         //delete
         long startDeleteHashSet = System.nanoTime();
-
+        hashSet.remove(new Random().nextInt(1000));
         long deleteHashSetTime = System.nanoTime() - startDeleteHashSet;
+        System.out.println("Delete in hash set : " + deleteHashSetTime);
 
+        long startDeleteLinkedHashSet = System.nanoTime();
+        linkedHashSet.remove(new Random().nextInt(1000));
+        long deleteLinkedHashSetTime = System.nanoTime() - startDeleteLinkedHashSet;
+        System.out.println("Delete in linked hash set : " + deleteLinkedHashSetTime);
+
+        long startDeleteTreeSet = System.nanoTime();
+        treeSet.remove(new Random().nextInt(1000));
+        long deleteTreeSetTime = System.nanoTime() - startDeleteTreeSet;
+        System.out.println("Delete in tree set : " + deleteTreeSetTime);
 
     }
 
@@ -185,7 +204,37 @@ public class TestCollection {
         LinkedHashMap<String, Integer> linkedHashMap = new LinkedHashMap<>();
         TreeMap<String, Integer> treeMap = new TreeMap<>();
 
+        long startAddToHashMap = System.nanoTime();
+        for (int i = 0; i <= 100000; i++) {
+            hashMap.put("" + i, i);
+        }
+        long addTimeToHashMap = System.nanoTime() - startAddToHashMap;
+        System.out.println("Add to hash map time: " + addTimeToHashMap);
 
+
+        long startAddToLinkedHashMap = System.nanoTime();
+        for (int i = 0; i <= 100000; i++) {
+            linkedHashMap.put("" + i, i);
+        }
+        long addTimeToLinkedHashMap = System.nanoTime() - startAddToLinkedHashMap;
+        System.out.println("Add to Linked hash map time: " + addTimeToLinkedHashMap);
+
+
+        long startAddToTreeMap = System.nanoTime();
+        for (int i = 0; i <= 100000; i++) {
+            treeMap.put("" + i, i);
+        }
+        long addTimeToTreeMap = System.nanoTime() - startAddToTreeMap;
+        System.out.println("Add to Tree map time: " + addTimeToTreeMap);
+
+
+        //search element
+        long startSearchInHashMap = System.nanoTime();
+        for (int i = 0; i <= 100000; i++) {
+
+        }
+        long searchTimeToHashMap = System.nanoTime() - startSearchInHashMap;
+        System.out.println("Search in hash map time: " + searchTimeToHashMap);
 
 
     }
